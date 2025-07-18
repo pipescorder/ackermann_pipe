@@ -116,6 +116,26 @@ Para cambiar tono:
 
 ---
 
+## Uso de URDF y Xacro
+
+1. **¿Qué es URDF?**
+
+   * Formato XML para describir links, joints, geometría y materiales.
+2. **¿Por qué Xacro?**
+
+   * Permite modularizar, parametrizar y simplificar la generación de URDF.
+3. **Generar URDF a partir de Xacro**:
+
+   ```bash
+   xacro `ros2 pkg prefix ackermann_pipe`/share/ackermann_pipe/urdf/robot.xacro > robot.urdf
+   ```
+4. **Verificar sintaxis**:
+
+   ```bash
+   check_urdf robot.urdf
+   ```
+
+   
 ## Visualización en RViz
 
 1. **Lanzar el nodo de visualización**:
@@ -151,6 +171,25 @@ Para cambiar tono:
 * **Tópico**: publica en `/cmd_vel`; el plugin de Gazebo lo suscribe para mover el robot.
 
 
+## Simulación en Gazebo
+
+1. **Lanzar simulación completa**:
+
+   ```bash
+   ros2 launch ackermann_pipe gazebo.launch.py
+   ```
+2. **Verificar spawn**:
+
+   * Observa mensajes en consola: `spawn_entity`: `entity robot`.
+3. **Mover robot**:
+
+   * Abre un nuevo terminal y lanza teleop:
+
+     ```bash
+     ros2 run teleop_twist_keyboard teleop_twist_keyboard
+     ```
+   * Usa `i/j/k/l` para avanzar, girar, retroceder.
+   * 
 
 ## Requisitos del Software
 
@@ -198,64 +237,6 @@ ackermann_pipe/                # Raíz del paquete
 ├── setup.py                   # Script de instalación Python
 ├── setup.cfg                  # Configuración de linting/tests
 └── README.md                  # Documentación del proyecto
-````
 
----
-
-## Uso de URDF y Xacro
-
-1. **¿Qué es URDF?**
-
-   * Formato XML para describir links, joints, geometría y materiales.
-2. **¿Por qué Xacro?**
-
-   * Permite modularizar, parametrizar y simplificar la generación de URDF.
-3. **Generar URDF a partir de Xacro**:
-
-   ```bash
-   xacro `ros2 pkg prefix ackermann_pipe`/share/ackermann_pipe/urdf/robot.xacro > robot.urdf
-   ```
-4. **Verificar sintaxis**:
-
-   ```bash
-   check_urdf robot.urdf
-   ```
-
-
-
-## Simulación en Gazebo
-
-1. **Lanzar simulación completa**:
-
-   ```bash
-   ros2 launch ackermann_pipe gazebo.launch.py
-   ```
-2. **Verificar spawn**:
-
-   * Observa mensajes en consola: `spawn_entity`: `entity robot`.
-3. **Mover robot**:
-
-   * Abre un nuevo terminal y lanza teleop:
-
-     ```bash
-     ros2 run teleop_twist_keyboard teleop_twist_keyboard
-     ```
-   * Usa `i/j/k/l` para avanzar, girar, retroceder.
-4. **Inspeccionar en RViz**:
-
-   * El mismo lanzamiento abre RViz con la configuración `config_lidar.rviz`.
-
----
-
-
----
-
-
----
-
----
-
-
----
 
 
