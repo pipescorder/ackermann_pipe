@@ -1,0 +1,20 @@
+[0.597s] Invoking command in '/home/pipescorder/ackermann_pipe': PYTHONPATH=/home/pipescorder/ackermann_pipe/build/ackermann_pipe/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pipescorder/ackermann_pipe/install/ackermann_pipe/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/ackermann_pipe build --build-base /home/pipescorder/ackermann_pipe/build/ackermann_pipe/build install --record /home/pipescorder/ackermann_pipe/build/ackermann_pipe/install.log --single-version-externally-managed install_data
+[0.843s] running egg_info
+[0.844s] writing build/ackermann_pipe/ackermann_pipe.egg-info/PKG-INFO
+[0.844s] writing dependency_links to build/ackermann_pipe/ackermann_pipe.egg-info/dependency_links.txt
+[0.844s] writing entry points to build/ackermann_pipe/ackermann_pipe.egg-info/entry_points.txt
+[0.844s] writing requirements to build/ackermann_pipe/ackermann_pipe.egg-info/requires.txt
+[0.844s] writing top-level names to build/ackermann_pipe/ackermann_pipe.egg-info/top_level.txt
+[0.846s] reading manifest file 'build/ackermann_pipe/ackermann_pipe.egg-info/SOURCES.txt'
+[0.847s] writing manifest file 'build/ackermann_pipe/ackermann_pipe.egg-info/SOURCES.txt'
+[0.847s] running build
+[0.847s] running build_py
+[0.847s] running install
+[0.848s] running install_lib
+[0.850s] running install_data
+[0.850s] running install_egg_info
+[0.852s] removing '/home/pipescorder/ackermann_pipe/install/ackermann_pipe/lib/python3.10/site-packages/ackermann_pipe-0.0.0-py3.10.egg-info' (and everything under it)
+[0.852s] Copying build/ackermann_pipe/ackermann_pipe.egg-info to /home/pipescorder/ackermann_pipe/install/ackermann_pipe/lib/python3.10/site-packages/ackermann_pipe-0.0.0-py3.10.egg-info
+[0.853s] running install_scripts
+[0.873s] writing list of installed files to '/home/pipescorder/ackermann_pipe/build/ackermann_pipe/install.log'
+[0.897s] Invoked command in '/home/pipescorder/ackermann_pipe' returned '0': PYTHONPATH=/home/pipescorder/ackermann_pipe/build/ackermann_pipe/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pipescorder/ackermann_pipe/install/ackermann_pipe/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/ackermann_pipe build --build-base /home/pipescorder/ackermann_pipe/build/ackermann_pipe/build install --record /home/pipescorder/ackermann_pipe/build/ackermann_pipe/install.log --single-version-externally-managed install_data
