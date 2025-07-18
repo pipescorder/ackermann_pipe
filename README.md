@@ -250,4 +250,3 @@ Para cambiar tono:
 
 ---
 
-¡Listo! Con este README.md tendrás una guía completa y detallada para ejecutar y entender tu proyecto paso a paso.
