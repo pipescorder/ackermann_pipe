@@ -25,6 +25,147 @@ Este paquete ROS2, **ackermann\_pipe**, implementa la simulación y visualizaci�
 
 ---
 
+
+## Explicación de package.xml y setup.py
+
+* **package.xml**: declara metadatos, dependencias y exporta `ament_python`.
+* **setup.py**: indica a setuptools qué paquetes y archivos de datos instalar en `install/share/ackermann_pipe`.
+
+  * Se incluyen los directorios `launch/`, `urdf/`, `rviz/`, `imgs/`.
+
+
+
+## Modificación de colores
+
+Todas las apariencias se definen en `urdf/params.xacro` y `<material>` en `robot.xacro`:
+
+```xml
+<xacro:property name="green1_rgba" value="0.6 1.0 0.6 1.0"/>
+<material name="green1"><color rgba="${green1_rgba}"/></material>
+```
+
+Para cambiar tono:
+
+1. Edita valores RGBA en `params.xacro`.
+2. Reconstruye y relanza RViz/Gazebo:
+
+   ```bash
+   colcon build && source install/local_setup.bash
+   ros2 launch ackermann_pipe visualization.launch.py
+   ```
+
+   
+
+## Consejos de depuración
+
+* **Warnings de material**:
+
+  * Si ves `material 'blue' undefined`, revisa `lidar.xacro` y reemplaza `blue` por `greenX`.
+* **Gazebo no inicia**:
+
+  ```bash
+  pkill gzserver && pkill gzclient
+  ```
+* **Errores de transformaciones**:
+
+  * Revisa que todos los `link` estén unidos mediante `joint` y publicados por `robot_state_publisher`.
+* **Archivos no encontrados**:
+
+  * Asegúrate de usar `FindPackageShare('ackermann_pipe')` en los launch para rutas dinámicas.
+ 
+  * 
+## Descripción de los archivos principales
+
+* \`\`: Lanza RViz, `robot_state_publisher` y `joint_state_publisher_gui` para visualizar el robot y mover articulaciones.
+* \`\`: Lanza Gazebo, publica el modelo URDF, spawnea la entidad y ejecuta RViz simultáneamente.
+* \`\`: Xacro principal que incluye todos los módulos (`params.xacro`, `ackermann.xacro`, `gazebo.xacro`, `lidar.xacro`).
+* \`\`: Define propiedades reutilizables (dimensiones, radios, colores, etc.).
+* \`\`: Contiene la macro de chasis y ruedas.
+* \`\`: Añade plugins de Gazebo para cinemática Ackermann y sensor.
+* \`\`: Define el sensor LIDAR y su driver `libgazebo_ros_ray_sensor.so`.
+* \`\`: Archivo de configuración de RViz para mostrar el robot y el mensaje `LaserScan`.
+* \`\`: Manifiesto del paquete ROS2 con dependencias y metadatos.
+* \`\`: Script de instalación Python que incluye archivos de datos (launch, urdf, rviz, imgs).
+
+
+
+## Instalación y compilación
+
+1. **Configura tu entorno ROS2** (en cada terminal nueva):
+
+   ```bash
+   source /opt/ros/iron/setup.bash
+   ```
+2. **Clona o sitúa este paquete** dentro de tu workspace ROS2 (`src/`).
+
+   ```bash
+   cd ~/ackermann_pipe
+   ```
+3. **Compila con colcon** desde la raíz del workspace:
+
+   ```bash
+   colcon build --symlink-install --cmake-clean-cache
+   ```
+4. **Fuente del entorno de instalación**:
+
+   ```bash
+   source install/local_setup.bash
+   ```
+
+> Tras estos pasos, tendrás los nodos, URDF y Xacro instalados en `install/share/ackermann_pipe`.
+
+---
+
+## Visualización en RViz
+
+1. **Lanzar el nodo de visualización**:
+
+   ```bash
+   ros2 launch ackermann_pipe visualization.launch.py
+   ```
+2. **Control de articulaciones**:
+
+   * Usa la ventana de `joint_state_publisher_gui` para mover ruedas o ejes de dirección.
+3. **rqt\_graph**:
+
+   ```bash
+   ros2 run rqt_graph rqt_graph
+   ```
+
+   * Verifica nodos `/robot_state_publisher`, `/joint_state_publisher_gui`, tópicos `/joint_states`, `/tf`.
+
+---
+
+## Control Teleop
+
+* **Instalación**:
+
+  ```bash
+  sudo apt install ros-iron-teleop-twist-keyboard
+  ```
+* **Ejecución**:
+
+  ```bash
+  ros2 run teleop_twist_keyboard teleop_twist_keyboard
+  ```
+* **Tópico**: publica en `/cmd_vel`; el plugin de Gazebo lo suscribe para mover el robot.
+
+
+
+## Requisitos del Software
+
+* **Sistema operativo:** Ubuntu 22.04 LTS
+* **ROS2 Iron** instalado (desktop)
+* Paquetes ROS2 necesarios:
+
+  * `xacro`
+  * `robot_state_publisher`
+  * `joint_state_publisher_gui`
+  * `gazebo_ros`
+  * `rviz2`
+* **Python 3.10+** con `rclpy`
+* Opcional: `teleop_twist_keyboard` para control con teclado
+* 
 ## Estructura de carpetas
 
 `````bash
@@ -61,65 +202,6 @@ ackermann_pipe/                # Raíz del paquete
 
 ---
 
-## Requisitos de software
-
-
-* **Sistema operativo:** Ubuntu 22.04 LTS
-* **ROS2 Iron** instalado (desktop)
-* Paquetes ROS2 necesarios:
-
-  * `xacro`
-  * `robot_state_publisher`
-  * `joint_state_publisher_gui`
-  * `gazebo_ros`
-  * `rviz2`
-* **Python 3.10+** con `rclpy`
-* Opcional: `teleop_twist_keyboard` para control con teclado
-
----
-
-## Instalación y compilación
-
-1. **Configura tu entorno ROS2** (en cada terminal nueva):
-
-   ```bash
-   source /opt/ros/iron/setup.bash
-   ```
-2. **Clona o sitúa este paquete** dentro de tu workspace ROS2 (`src/`).
-
-   ```bash
-   cd ~/ackermann_pipe
-   ```
-3. **Compila con colcon** desde la raíz del workspace:
-
-   ```bash
-   colcon build --symlink-install --cmake-clean-cache
-   ```
-4. **Fuente del entorno de instalación**:
-
-   ```bash
-   source install/local_setup.bash
-   ```
-
-> Tras estos pasos, tendrás los nodos, URDF y Xacro instalados en `install/share/ackermann_pipe`.
-
----
-
-## Descripción de los archivos principales
-
-* \`\`: Lanza RViz, `robot_state_publisher` y `joint_state_publisher_gui` para visualizar el robot y mover articulaciones.
-* \`\`: Lanza Gazebo, publica el modelo URDF, spawnea la entidad y ejecuta RViz simultáneamente.
-* \`\`: Xacro principal que incluye todos los módulos (`params.xacro`, `ackermann.xacro`, `gazebo.xacro`, `lidar.xacro`).
-* \`\`: Define propiedades reutilizables (dimensiones, radios, colores, etc.).
-* \`\`: Contiene la macro de chasis y ruedas.
-* \`\`: Añade plugins de Gazebo para cinemática Ackermann y sensor.
-* \`\`: Define el sensor LIDAR y su driver `libgazebo_ros_ray_sensor.so`.
-* \`\`: Archivo de configuración de RViz para mostrar el robot y el mensaje `LaserScan`.
-* \`\`: Manifiesto del paquete ROS2 con dependencias y metadatos.
-* \`\`: Script de instalación Python que incluye archivos de datos (launch, urdf, rviz, imgs).
-
----
-
 ## Uso de URDF y Xacro
 
 1. **¿Qué es URDF?**
@@ -139,27 +221,7 @@ ackermann_pipe/                # Raíz del paquete
    check_urdf robot.urdf
    ```
 
----
 
-## Visualización en RViz
-
-1. **Lanzar el nodo de visualización**:
-
-   ```bash
-   ros2 launch ackermann_pipe visualization.launch.py
-   ```
-2. **Control de articulaciones**:
-
-   * Usa la ventana de `joint_state_publisher_gui` para mover ruedas o ejes de dirección.
-3. **rqt\_graph**:
-
-   ```bash
-   ros2 run rqt_graph rqt_graph
-   ```
-
-   * Verifica nodos `/robot_state_publisher`, `/joint_state_publisher_gui`, tópicos `/joint_states`, `/tf`.
-
----
 
 ## Simulación en Gazebo
 
@@ -185,68 +247,15 @@ ackermann_pipe/                # Raíz del paquete
 
 ---
 
-## Control Teleop
-
-* **Instalación**:
-
-  ```bash
-  sudo apt install ros-iron-teleop-twist-keyboard
-  ```
-* **Ejecución**:
-
-  ```bash
-  ros2 run teleop_twist_keyboard teleop_twist_keyboard
-  ```
-* **Tópico**: publica en `/cmd_vel`; el plugin de Gazebo lo suscribe para mover el robot.
 
 ---
 
-## Modificación de colores
-
-Todas las apariencias se definen en `urdf/params.xacro` y `<material>` en `robot.xacro`:
-
-```xml
-<xacro:property name="green1_rgba" value="0.6 1.0 0.6 1.0"/>
-<material name="green1"><color rgba="${green1_rgba}"/></material>
-```
-
-Para cambiar tono:
-
-1. Edita valores RGBA en `params.xacro`.
-2. Reconstruye y relanza RViz/Gazebo:
-
-   ```bash
-   colcon build && source install/local_setup.bash
-   ros2 launch ackermann_pipe visualization.launch.py
-   ```
 
 ---
 
-## Explicación de package.xml y setup.py
+---
 
-* **package.xml**: declara metadatos, dependencias y exporta `ament_python`.
-* **setup.py**: indica a setuptools qué paquetes y archivos de datos instalar en `install/share/ackermann_pipe`.
-
-  * Se incluyen los directorios `launch/`, `urdf/`, `rviz/`, `imgs/`.
 
 ---
 
-## Consejos de depuración
-
-* **Warnings de material**:
-
-  * Si ves `material 'blue' undefined`, revisa `lidar.xacro` y reemplaza `blue` por `greenX`.
-* **Gazebo no inicia**:
-
-  ```bash
-  pkill gzserver && pkill gzclient
-  ```
-* **Errores de transformaciones**:
-
-  * Revisa que todos los `link` estén unidos mediante `joint` y publicados por `robot_state_publisher`.
-* **Archivos no encontrados**:
-
-  * Asegúrate de usar `FindPackageShare('ackermann_pipe')` en los launch para rutas dinámicas.
-
----
 
