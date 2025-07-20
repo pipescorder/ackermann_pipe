@@ -2,24 +2,24 @@
 
 ## Descripción del proyecto
 
-Este paquete ROS2, **ackermann_pipe**, implementa la simulación y visualización de un robot móvil con cinemática Ackermann y un sensor LIDAR en ROS2 Iron (Ubuntu 22.04). El objetivo es cumplir con los requisitos del proyecto de simulación especificados en el documento PDF, estructurando el código de manera modular con URDF, Xacro, nodos de ROS2, visualización en RViz y simulación en Gazebo.
+Este paquete ROS2, **ackermann_pipe**, implementa la simulación y visualización de un robot móvil con cinemática Ackermann y un sensor LIDAR en ROS2 Iron (Ubuntu 22.04). El objetivo es cumplir con una estructura en el código de manera modular con URDF, Xacro, nodos de ROS2, visualización en RViz y simulación en Gazebo.
 
-**Autor:** Gabriel Escobar
+**Autor:** Gabriel Escobar, Benjamín Pérez y Ignacio Parra
 **Versión:** 0.1.0
 
 ---
 
 ## Índice
 
-1. [Estructura de carpetas](#estructura-de-carpetas)
-2. [Requisitos de Software](#requisitos-del-software)
-3. [Instalación y compilación](#instalación-y-compilación)
-4. [Visualización en RViz](#visualización-en-rviz)
-5. [Simulación en Gazebo](#simulación-en-gazebo)
-6. [Control Teleop](#control-teleop)
-7. [Modificación de colores](#modificación-de-colores)
-8. [Explicación de package.xml y setup.py](#explicación-de-packagexml-y-setuppy)
-9. [Consejos de depuración](#consejos-de-depuración)
+3. [Requisitos de Software](#requisitos-del-software)
+4. [Consejos de depuración](#consejos-de-depuración)
+5. [Instalación y compilación](#instalación-y-compilación)
+6. [Visualización en RViz](#visualización-en-rviz)
+7. [Simulación en Gazebo](#simulación-en-gazebo)
+8. [Control Teleop](#control-teleop)
+9. [Modificación de colores](#modificación-de-colores)
+10. [Explicación de package.xml y setup.py](#explicación-de-packagexml-y-setuppy)
+11. [Estructura de carpetas](#estructura-de-carpetas)
 
 ---
 
