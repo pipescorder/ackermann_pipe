@@ -1,4 +1,4 @@
-# ackermann_pipe
+# Robot Ackermann
 
 ## Descripción del proyecto
 
