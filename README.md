@@ -35,7 +35,7 @@ Este paquete ROS2, **ackermann_pipe**, implementa la simulación y visualizació
   * `gazebo_ros`
   * `rviz2`
 * **Python 3.10+** con `rclpy`
-* Opcional: `teleop_twist_keyboard` para control con teclado
+* Opcional: `teleop_twist_keyboard` para control con teclado del robot
 
 ## Explicación de package.xml y setup.py
 
@@ -75,26 +75,23 @@ Para cambiar tono:
   ```bash
   pkill gzserver && pkill gzclient
   ```
-* **Errores de transformaciones**:
-
-  * Revisa que todos los `link` estén unidos mediante `joint` y publicados por `robot_state_publisher`.
 * **Archivos no encontrados**:
 
-  * Asegúrate de usar `FindPackageShare('ackermann_pipe')` en los launch para rutas dinámicas.
+  * Asegúrarse de usar `FindPackageShare('ackermann_pipe')` en los launch para rutas dinámicas.
  
 ## Instalación y compilación
 
-1. **Configura tu entorno ROS2** (en cada terminal nueva):
+1. **Configurar el entorno ROS2** (en cada terminal nueva):
 
    source /opt/ros/iron/setup.bash
  
-2. **Clona o sitúa este paquete** dentro de tu workspace ROS2 (`src/`).
+2. **Situarse en este paquete** dentro del workspace ROS2.
 
    cd ~/ackermann_pipe
 
-3. **Compila con colcon** desde la raíz del workspace:
+3. **Compila con colcon** desde la raíz del workspace ackermann_pipe:
 
-   colcon build --symlink-install --cmake-clean-cache
+   colcon build
 
 4. **Fuente del entorno de instalación**:
 
