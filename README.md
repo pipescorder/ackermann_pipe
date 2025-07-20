@@ -11,15 +11,15 @@ Este paquete ROS2, **ackermann_pipe**, implementa la simulación y visualizació
 
 ## Índice
 
-3. [Requisitos de Software](#requisitos-del-software)
+1. [Requisitos de Software](#requisitos-del-software)
+2. [Explicación de package.xml y setup.py](#explicación-de-packagexml-y-setuppy)
+3. [Modificación de colores](#modificación-de-colores)
 4. [Consejos de depuración](#consejos-de-depuración)
 5. [Instalación y compilación](#instalación-y-compilación)
 6. [Visualización en RViz](#visualización-en-rviz)
-7. [Simulación en Gazebo](#simulación-en-gazebo)
-8. [Control Teleop](#control-teleop)
-9. [Modificación de colores](#modificación-de-colores)
-10. [Explicación de package.xml y setup.py](#explicación-de-packagexml-y-setuppy)
-11. [Estructura de carpetas](#estructura-de-carpetas)
+7. [Control Teleop](#control-teleop)
+8. [Simulación en Gazebo](#simulación-en-gazebo)
+9. [Estructura de carpetas](#estructura-de-carpetas)
 
 ---
 
