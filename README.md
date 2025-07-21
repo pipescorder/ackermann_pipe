@@ -126,16 +126,18 @@ Para la visualización mediante los nodos `robot_state_publisher`, `joint_state_
 
 ## Modificación de colores
 
-Todas las apariencias se definen en `urdf/params.xacro` y `<material>` en `robot.xacro`:
+Todas las apariencias se definen en `urdf/ackermann.xacro` y `<material>` en [`ackermann.xacro`](https://github.com/pipescorder/ackermann_pipe/blob/main/urdf/ackermann.xacro):
 
 ```xml
-<xacro:property name="green1_rgba" value="0.6 1.0 0.6 1.0"/>
-<material name="green1"><color rgba="${green1_rgba}"/></material>
+ <material name="greenX">
+    <color rgba="0.6 1.0 0.6 1.0"/>
+  </material>
 ```
-
+> ⚠️ **IMPORTANTE:** "greenX" es el nombre con el cual es definido el color configurado, como se utilizó una tonalidad de verdes, solo se fue cambiando el valor de "X" aumentando ascendentemente. Cada uno de los colores configurados que posteriormente se ocupan dentro de los códigos que definen cada una de las partes del robot, se tienen que ir cambiando los valores de `<color rgba="0.6 1.0 0.6 1.0"/>` .
+> 
 Para cambiar tono:
 
-1. Edita valores RGBA en `params.xacro`.
+1. Edita valores RGBA en `ackermann.xacro`.
 2. Reconstruye y relanza RViz/Gazebo:
 
    ```bash
