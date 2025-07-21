@@ -89,7 +89,7 @@ Para cambiar tono:
 
 - [ackermann urdf](https://github.com/pipescorder/ackermann_pipe/blob/main/urdf/ackermann_model.urdf)
 
-**Comandos de ejecución:**
+* **Comandos de ejecucion**
 
 ```bash
 ros2 launch urdf_tutorial display.launch.py model:=<path to ackermann_model.urdf>
