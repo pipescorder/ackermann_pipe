@@ -87,7 +87,7 @@ Para cambiar tono:
 - `iron`: Actualmente se está empleando **iron**
 
 
-- [[ackermann urdf](https://github.com/pipescorder/ackermann_pipe/blob/main/ackermann_robot/urdf/ackermann_model.urdf)]
+- [[[ackermann urdf](https://github.com/pipescorder/ackermann_pipe/blob/main/urdf/ackermann_model.urdf)
 
 **Comandos de ejecución:**
 
