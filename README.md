@@ -7,6 +7,30 @@ Este paquete ROS2, **ackermann_pipe**, implementa la simulación y visualizació
 **Autor:** Gabriel Escobar, Benjamín Pérez y Ignacio Parra
 **Versión:** 0.1.0
 
+## Proyecto Simulación con ROS2
+
+- ROS2 [ROS2 Documentation](https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debians.html) (Seguir Desktop Install)
+- Gazebo ```sudo apt install ros-<version_ros>-gazebo-ros-pkgs```
+- Xacro ```sudo apt install ros-<version_ros>-xacro```
+- `<version_ros>`: Actualmente se está empleando **iron**
+
+> [!IMPORTANT]
+> Para utilizar ROS2, siempre hacer source ROS2 en cada nueva terminal:  
+> ```bash
+> source /opt/ros/iron/setup.bash
+> ```
+
+---
+
+## URDF
+
+- [ackermann urdf](https://github.com/abarbierif/ackermann_ros2/blob/main/ackermann_robot/urdf/ackermann_model.urdf)
+
+**Comandos de ejecución:**
+
+```bash
+ros2 launch urdf_tutorial display.launch.py model:=<path to ackermann_model.urdf>
+
 ---
 
 ## Índice
