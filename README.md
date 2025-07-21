@@ -82,9 +82,9 @@ Para cambiar tono:
 ## Instalación y compilación
 
 - ROS2 [ROS2 Documentation](https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debians.html) (Seguir Desktop Install)
-- Gazebo ```sudo apt install ros-<version_ros>-gazebo-ros-pkgs```
-- Xacro ```sudo apt install ros-<version_ros>-xacro```
-- `<version_ros>`: Actualmente se está empleando **iron**
+- Gazebo ```sudo apt install ros-iron-gazebo-ros-pkgs```
+- Xacro ```sudo apt install ros-iron-xacro```
+- `iron`: Actualmente se está empleando **iron**
 
 
 - [[ackermann urdf](https://github.com/pipescorder/ackermann_pipe/blob/main/ackermann_robot/urdf/ackermann_model.urdf)]
